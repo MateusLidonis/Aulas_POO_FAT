@@ -19,6 +19,7 @@ public class BancoDeDados {
     }
     
     public void incluirPato(String nome) {
+        // Não insiro o id pois na criação da tabela deixei esse campo como serial (autonumber)
         String sql = "INSERT INTO Pato (nome) VALUES (?)";
         
         try(PreparedStatement stmt = conn.prepareStatement(sql)){
