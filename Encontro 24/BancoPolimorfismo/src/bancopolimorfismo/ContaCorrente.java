@@ -1,9 +1,31 @@
 package bancopolimorfismo;
 
 public class ContaCorrente {
-    int codigo;
-    String nome;
-    double saldo;
+
+    public int getCodigo() {
+        return codigo;
+    }
+    public void setCodigo(int codigo) {
+        this.codigo = codigo;
+    }
+
+    public String getNome() {
+        return nome;
+    }
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
+
+    public double getSaldo() {
+        return saldo;
+    }
+    public void setSaldo(double saldo) {
+        this.saldo = saldo;
+    }
+    
+    private int codigo;
+    private String nome;
+    private double saldo;
     
     public ContaCorrente(int codigo, String nome, double saldoInicial) {
         this.codigo = codigo;
@@ -13,27 +35,27 @@ public class ContaCorrente {
     
     public void depositar(double valor) {
         if(valor > 0) {
-            saldo += valor;
+            setSaldo(getSaldo() + valor);
         }
     }
     
     public void sacar(double valor) {
         double taxa = valor * 0.005;
         double total = valor + taxa;
-        if(total <= saldo) {
-            saldo -= total;
+        if(total <= getSaldo()) {
+            setSaldo(getSaldo() - total);
         }
     }
     
     public double obterSaldo() {
-        return saldo;
+        return getSaldo();
     }
     
     @Override
     public String toString() {
         return "Conta Corrente (" +
-                "Código: " + codigo +
-                ", Nome: " + nome +
-                ", Saldo: " + saldo + ")";
+                "Código: " + getCodigo() +
+                ", Nome: " + getNome() +
+                ", Saldo: " + getSaldo() + ")";
     }
 }
